@@ -3,7 +3,7 @@
 @section('content')
 
 
-	<div class="large-12" ng-controller="ListaComprasController">
+	<div class="large-12" ng-controller="ProductsController">
 
 		<h3>All products <small>({{ items.length }})</small> </h3>
 
@@ -29,13 +29,14 @@
 					<tr ng-repeat="item in items">
 						<td>{{ item.id }}</td>
 						<td>{{ item.name }}</td>
-						<td>{{ item.value }}</td>
+						<td>{{ item.value | currency:"R$ " }}</td>
 						<td>{{ item.created_at }}</td>
-						<td>{{ item.status }}</td>
+						<td>{{ (item.status==1)? "Ativo" : "Inativo" }}</td>
 						<td>
-							<a href="javascript:void(0);" class="button tiny"><i class="step fi-magnifying-glass size-21"></i></a>
-							<a href="javascript:void(0);" class="button tiny">x</a>
-							<a href="javascript:void(0);" class="button tiny alert">x</a>
+							<a href="javascript:void(0);" class="button tiny"><i class="step fi-magnifying-glass size-24"></i></a>
+							<a href="javascript:void(0);" class="button tiny"><i class="step fi-pencil size-24"></i></a>					
+							<a href="javascript:void(0);" class="button tiny alert" onclick="return confirm('Are you sure you want to delete this item ?');"><i class="step fi-x size-24"></i></a>					
+							
 						</td>
 					</tr>
 				</tbody>
@@ -47,14 +48,9 @@
 
 
 	<script type="text/javascript">
-		function ListaComprasController ($scope)
+		function ProductsController ($scope)
 		{
-			$scope.items = <?php echo json_encode($products); ?>
-
-			// [
-			// 	{produto: 'Leite', quantidade: 2, comprado: false},
-			// 	{produto: 'Cerveja', quantidade: 12, comprado: false},
-			// ];
+			$scope.items = <?php echo json_encode($products); ?>;
 		}
 	</script>
 
