@@ -8,5 +8,8 @@ Author : Kaio Cesar <programador.kaio@gmail.com>
 * Angular.js;
 * Foundation CSS Framework.
 
-
-###### Install
+###### How to use this project
+- Step 1: install the database, which is located in `\Docs\dump.sql` 
+- Step 2: Setting and configure the database in the file `\app\config\database.php`
+- Step 3: create a VHost
+- Okay!
